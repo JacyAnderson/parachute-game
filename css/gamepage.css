@@ -1,0 +1,43 @@
+/*GAMEPAGE STYLING*/
+
+body, .gameboard {
+	max-width: 1440px;
+	max-height: 650px;
+	width: 1440px;
+	height: 650px;
+	margin: 0px;
+}
+
+body {
+	background-color: black;
+}
+
+header {
+	background: green;
+	width: 100%
+}
+
+.gameName {
+	display: inline-block;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	float: right;
+}
+
+.dropdownContent{
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdownContent {
+	display: block;
+}
+
+.gameboard {
+	background-color: teal;
+}
