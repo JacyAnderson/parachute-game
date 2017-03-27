@@ -2,8 +2,7 @@
 
 # [Link to my Trello](https://trello.com/b/3MgGS7wO/parachute-project-1)
 
-<<<<<<< HEAD
-![]()
+![](images/wireframe.JPG)
 
 
 #Game Name: Easy Company
@@ -20,11 +19,20 @@
 #### Move right: "D" key
 
 ### Player 2:
-#### Move left: "left arrow" key
-#### Move right: "right arrow" key
+#### Move left: "J" key
+#### Move right: "L" key
 
 ### As a Team:
 #### Players cannot overlap, necessitating effective communication to strafe and avoid incoming fire. Remember: No trooper left behind! 
-=======
-![](images/wireframe.JPG)
->>>>>>> 7b0480476bf1221e23b177cb452367bde65f657f
+
+
+## March 27th, 2017 
+####	- Dear diary, today I start my mission to construct my first(ish) game. My goal between now and midday tomorrow is to animate my player divs to recreate "gravity" as the players parachute down, and to create a function that allows players to move side to side while parachuting down. I SHOULD take that time to create a function that shoots random div "rockets" from both sides of the screen, but I need to test that the gravity animation and player controls work together first. This will likely bite me in the ass later: I will report back.
+
+### Today's Issues
+#### - Git Hub gave me a commit conflict error, but I figured it out with git pull, git fetch, and git merge.
+
+### Today's Successes
+
+
+
