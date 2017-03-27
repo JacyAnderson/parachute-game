@@ -2,6 +2,7 @@
 
 # [Link to my Trello](https://trello.com/b/3MgGS7wO/parachute-project-1)
 
+<<<<<<< HEAD
 ![]()
 
 
@@ -24,3 +25,6 @@
 
 ### As a Team:
 #### Players cannot overlap, necessitating effective communication to strafe and avoid incoming fire. Remember: No trooper left behind! 
+=======
+![](images/wireframe.JPG)
+>>>>>>> 7b0480476bf1221e23b177cb452367bde65f657f
