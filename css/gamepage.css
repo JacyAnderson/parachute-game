@@ -1,22 +1,35 @@
 /*GAMEPAGE STYLING*/
 
-/*Sets definite gameboard and body size*/
-body, .gameboard {
-	max-width: 1440px;
-	max-height: 650px;
-	width: 1440px;
-	height: 650px;
-	margin: 0px;
+/*Sets definite body size*/
+body {
+  background-color: black;
+  max-width: 1440px;
+  max-height: 650px;
+  width: 1440px;
+  height: 650px;
 }
 
-body {
-	background-color: black;
+/*Sets definite max height entire body and gameboard*/
+.height {
+  max-height: 650px;
+  height: 650px;
+}
+
+/*Sets margin for body and gameboard*/
+.margin {
+	margin: 0 auto;
+}
+
+/*Defines gameboard width to be slightly smaller than entire body*/
+.gameboard {
+  max-width: 1100px;
+  width: 1100px;
 }
 
 /*styles header*/
 header {
-	background: green;
-	width: 100%
+  background: green;
+  width: 100%
 }
 
 .gameName {
@@ -43,6 +56,29 @@ header {
 	display: block;
 }
 
+/*Main gameboard styling*/
 .gameboard {
 	background-color: teal;
+	position: relative;
+}
+
+/*Styling for both player divs*/
+.players {
+  max-width: 30px;
+  width: 30px;
+  max-height: 60px;
+  height: 60px;
+  position: absolute;
+  top: 8px;
+}
+
+/*placeholder styling for Player One image*/
+.playerOne {
+  left: 40%;
+  background-color: pink;
+}
+
+.playerTwo {
+	background-color: beige;
+	right: 40%;
 }
