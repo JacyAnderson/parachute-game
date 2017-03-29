@@ -17,6 +17,10 @@ $(".players").click(function gravity(){
     $(".players").animate({top: '590px'}, 30000);
 }); 
 
+function messageBoard() {
+  $('<div>A message board!</div>').appendTo('.gameboard').addClass('messageBoard');
+}
+
 // Function to move playerOne
 $(document).keypress(function movePlayerOne(e) {
   // console.log(e.keyCode);
@@ -92,7 +96,8 @@ var rocketNum = 1;
 // Creates rockets and launches them across the screen
 function rocketsLeft(){
   var randomTop = Math.floor((Math.random() * 500) + 65);
-  $('<div>Rocket</div>').appendTo(".gameboard").attr('id', 'rocketLeft-' + rocketNum).addClass('rocketLeft rocket');
+  $('<div></div>').appendTo(".gameboard").attr('id', 'rocketLeft-' + rocketNum).addClass('rocketLeft rocket');
+  // $('#rocketLeft-' + rocketNum).css('background', 'url(images/rocketRight.png)');
   $("#rocketLeft-" + rocketNum).css({top: randomTop});
   $("#rocketLeft-" + rocketNum).animate({left: '1300px'}, rocketSpeed);
   rocketNum++
@@ -120,8 +125,6 @@ $('.players').click(function fireRocket() {
 / get & store rockets position in sensible way 
 / delete rockets once off screen 
 / check collision detection for rockets on screen
-
-console log this to see if it's firing what we want
 */
 function rocketPosition() {
   $('.rocket').each( function() {
@@ -138,74 +141,43 @@ function rocketPosition() {
       (x1 + $('.playerOne').outerWidth(true)) < x3 ||
       x1 > (x3 + $(this).outerWidth(true))) {
         // console.log(false);
-    }else {
+    } else {
+      playerOneDead();
+      $(this).stop();
+      $(this).css('background-image', "url('images/explosion.gif')");
+      $(this).css('height','80px');
+      // $(this).css('background-position', 'center');
+      // $(this).remove();
       console.log(true + " player one blew up");
-      return true;
-      console.log('Boom!')
     }
     if ((y2 + $('.playerTwo').outerHeight(true)) < y3 ||
       y2 > (y3 + $(this).outerHeight(true))  ||
       (x2 + $('.playerTwo').outerWidth(true)) < x3 ||
       x2 > (x3 + $(this).outerWidth(true))) {
 
-    }else{
+    } else {
+      playerTwoDead();
+      $(this).remove();
       console.log(true + " player two blew up");
     }
   });
 }  
 
+// Removes player one from gameboard
+function playerOneDead() {
+  $('.playerOne').remove();
+}
+
+//removes player two from gameboard
+function playerTwoDead() {
+  $('.playerTwo').remove();
+}
+
+// Checks for rocket collision in set intervals
 setInterval(function() {
   rocketPosition();
 }, 400);
-    // var rocketPos = $(this).position();
-    // console.log(rocketPos);
-
-
-    
-    // console.log(this + " is hopefully the rocket");
-    // console.log(x3 + " this should be the rocket's left");
-    // console.log(y3 + " this should be the rocket's top");
-    // if ((y1 + $('.playerOne').outerHeight(true)) < y3 ||
-    //   y1 > (y3 + $(this).outerHeight(true))  ||
-    //   (x1 + $('.playerOne').outerWidth(true)) < x3 ||
-    //   x1 > (x3 + $(this).outerWidth(true)) && 
-    //   (y2 + $('.playerTwo').outerHeight(true)) < y3 ||
-    //   y2 > (y3 + $(this).outerHeight(true))  ||
-    //   (x2 + $('.playerTwo').outerWidth(true)) < x3 ||
-    //   x2 > (x3 + $(this).outerWidth(true))) {
-    //   // return false;
-    //   console.log(false + "player has not been hit")
-    // } else { 
-    //   // return true;
-    //   console.log(true + "player has been hit");
-    //   alert('player has been hit');
-    // }
-
-    // if ($('.playerOne').position().right < $(this).position().left ||
-    //     $('.playerOne').position().left > $(this).position().right ||
-    //     $('.playerOne').position().bottom < $(this).position().top||
-    //     $('.playerOne').position().top > $(this).position().bottom) {
-    //     alert("player has been hit");
-    // }
-    // console.log(this);
-  // var x1 = $('.playerOne').position().left;
-  // var y1 = $('.playerOne').position().top;
-  // var x2 = $('.playerTwo').position().left;
-  // var y2 = $('.playerTwo').position().top;
-  // var x3 = $(this).position().left;
-  // var y3 = $(this).position().top;
-
-  // if ((y1 + $('.playerOne').outerHeight(true)) < y3 ||
-  //     y1 > (y3 + $(this).outerHeight(true))  ||
-  //     (x1 + $('.playerOne').outerWidth(true)) < x3 ||
-  //     x1 > (x3 + $(this).outerWidth(true))) {
-  //       // console.log(false);
-  //       alert("collision");
-  //     } else{
-  //       alert("collision");
-  //     }
  
-
 // Write function that checks for collision between divs
 function collision(playerOne, playerTwo) {
   var x1 = $('.playerOne').offset().left;
@@ -225,9 +197,9 @@ function collision(playerOne, playerTwo) {
     // console.log(true);
     $('.playerOne').css({
         left: $('.playerOne').position().left - 30 + "px"
-      })
+    })
     $('.playerTwo').css({
         right: $('.playerTwo').position().right - 30 + "px"
-      })
+    })
   }
 }
