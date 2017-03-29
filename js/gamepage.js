@@ -58,6 +58,7 @@ $(document).keypress(function movePlayerOne(e) {
       }
       leftPressed();
       console.log('the "a" key pressed');
+      collision();
       break;
     }
 
@@ -70,6 +71,7 @@ $(document).keypress(function movePlayerOne(e) {
       }
       rightPressed();
       console.log('the "d" key pressed');
+      collision();
       break;
     }
   }
@@ -90,6 +92,7 @@ $(document).keypress(function movePlayerTwo(e) {
       }
       leftPressed();
       console.log('the "left arrow" key pressed');
+      collision();
       break;
     }
 
@@ -102,6 +105,7 @@ $(document).keypress(function movePlayerTwo(e) {
       }
       rightPressed();
       console.log('the "right arrow" key pressed');
+      collision();
       break;
     }
   }
@@ -158,4 +162,3 @@ function collision(playerOne, playerTwo) {
     console.log(true);
   }
 }
-collision();
