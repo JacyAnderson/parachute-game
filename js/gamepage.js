@@ -134,13 +134,22 @@ function rocketPosition() {
     // console.log("hello");
     // console.log(this);
     if ((y1 + $('.playerOne').outerHeight(true)) < y3 ||
-      y1 > (y3 + $('.playerTwo').outerHeight(true))  ||
+      y1 > (y3 + $(this).outerHeight(true))  ||
       (x1 + $('.playerOne').outerWidth(true)) < x3 ||
-      x1 > (x3 + $('.playerTwo').outerWidth(true))) {
+      x1 > (x3 + $(this).outerWidth(true))) {
         // console.log(false);
     }else {
-      console.log(true);
-      alert('BOOM!');
+      console.log(true + " player one blew up");
+      return true;
+      console.log('Boom!')
+    }
+    if ((y2 + $('.playerTwo').outerHeight(true)) < y3 ||
+      y2 > (y3 + $(this).outerHeight(true))  ||
+      (x2 + $('.playerTwo').outerWidth(true)) < x3 ||
+      x2 > (x3 + $(this).outerWidth(true))) {
+
+    }else{
+      console.log(true + " player two blew up");
     }
   });
 }  
@@ -222,21 +231,3 @@ function collision(playerOne, playerTwo) {
       })
   }
 }
-//calculate x and y position for rockets and compare to both players (each player individually)
-
-// function collisionRocket {
-// var x1 = $('.playerOne').offset().left;
-// var y1 = $('.playerOne').offset().top;
-// var x2 = $('.playerTwo').offset().left;
-// var y2 = $('.playerTwo').offset().top;
-// var x3 = $('.rocket').offset().left;
-// var y3 = $('.rocket').offset().top;
-
-//   if ((y1 + $('.playerOne').outerHeight(true)) < y2 ||
-//     y1 > (y2 + $('.playerTwo').outerHeight(true))  ||
-//     (x1 + $('.playerOne').outerWidth(true)) < x2 ||
-//     x1 > (x2 + $('.playerTwo').outerWidth(true))) 
-//     console.log(false);
-//   else {
-//     console.log(true);
-// }
