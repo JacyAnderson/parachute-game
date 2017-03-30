@@ -14,7 +14,12 @@ var moveLeft = 5;
 / Simulates gravity on both players
 */
 $(".players").click(function gravity(){
-    $(".players").animate({top: '590px'}, 30000);
+    $(".players").animate({top: '565px'}, 30000);
+    function checkForWin() {
+  if($('.player').top() == 570 + 'px';){
+    console.log("Easy Company wins!")
+  }
+}
 }); 
 
 function messageBoard() {
@@ -93,21 +98,26 @@ $(document).keypress(function movePlayerTwo(e) {
 // Sets initial rocket speed
 var rocketSpeed = 13000;
 var rocketNum = 1;
-// Creates rockets and launches them across the screen
+// Creates rockets on left side of screen and launches them across the gameboard
 function rocketsLeft(){
   var randomTop = Math.floor((Math.random() * 500) + 65);
   $('<div></div>').appendTo(".gameboard").attr('id', 'rocketLeft-' + rocketNum).addClass('rocketLeft rocket');
   // $('#rocketLeft-' + rocketNum).css('background', 'url(images/rocketRight.png)');
   $("#rocketLeft-" + rocketNum).css({top: randomTop});
-  $("#rocketLeft-" + rocketNum).animate({left: '1300px'}, rocketSpeed);
+  $("#rocketLeft-" + rocketNum).animate({left: '1300px'}, rocketSpeed, function(){
+    $(this).remove();
+  });
   rocketNum++
 }
 
+// Creates rockets on left side of screen and launches them across the gameboard
 function rocketsRight(){
   var randomTop = Math.floor((Math.random() * 500) + 65);
   $('<div></div>').appendTo(".gameboard").attr('id', 'rocketRight-' + rocketNum).addClass('rocketRight rocket');
   $("#rocketRight-" + rocketNum).css({top: randomTop});
-  $("#rocketRight-" + rocketNum).animate({right: '1300px'}, rocketSpeed);
+  $("#rocketRight-" + rocketNum).animate({right: '1300px'}, rocketSpeed, function() {
+    $(this).remove();
+  });
   rocketNum++
 }
 
@@ -115,7 +125,6 @@ $('.players').click(function fireRocket() {
   window.setInterval(function() {
     rocketsLeft();
     rocketsRight();
-    rocketPosition();
   }, 3000);
 });
 // time should be 3000
@@ -150,6 +159,7 @@ function rocketPosition() {
       $(this).stop();
       $(this).css('background-image', "url('images/explosion.gif')");
       $(this).css('height','80px');
+      $(this).delay(715).fadeOut();
       // $(this).css('background-position', 'center');
       // $(this).remove();
       console.log(true + " player one blew up");
@@ -164,6 +174,7 @@ function rocketPosition() {
       $(this).stop();
       $(this).css('background-image', "url('images/explosion.gif')");
       $(this).css('height','80px');
+      $(this).delay(715).fadeOut();
       console.log(true + " player two blew up");
     }
   });
@@ -209,3 +220,5 @@ function collision(playerOne, playerTwo) {
     })
   }
 }
+
+
