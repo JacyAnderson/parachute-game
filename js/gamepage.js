@@ -25,6 +25,7 @@ $(".players").click(function gravity(){
       complete: function () {
         if (gameOver === false) {
           messageBoard();
+          $('.messageBoard').css("background-color", "#99773D");
           console.log(gameOver);
           $('<h2>Winner, Winner, Chicken Dinner!</h2>').appendTo('.messageBoard');
           gameOver = true;
@@ -32,6 +33,16 @@ $(".players").click(function gravity(){
     }
   })
 });
+
+function loser() {
+  if (gameOver === false) {
+     messageBoard();
+    $('.messageBoard').css("background-color", "grey");
+    $('<h2>How does it feel to be a loser?</h2>').appendTo('.messageBoard');
+    console.log(gameOver);
+    gameOver = true;
+  }
+}
 
 function messageBoard() {
   $('<div>A message board!</div>').appendTo('.gameboard').addClass('messageBoard');
@@ -111,7 +122,7 @@ var rocketSpeed = 13000;
 var rocketNum = 1;
 // Creates rockets on left side of screen and launches them across the gameboard
 function rocketsLeft(){
-  var randomTop = Math.floor((Math.random() * 500) + 65);
+  var randomTop = Math.floor((Math.random() * 450) + 80);
   $('<div></div>').appendTo(".gameboard").attr('id', 'rocketLeft-' + rocketNum).addClass('rocketLeft rocket');
   // $('#rocketLeft-' + rocketNum).css('background', 'url(images/rocketRight.png)');
   $("#rocketLeft-" + rocketNum).css({top: randomTop});
@@ -123,7 +134,7 @@ function rocketsLeft(){
 
 // Creates rockets on left side of screen and launches them across the gameboard
 function rocketsRight(){
-  var randomTop = Math.floor((Math.random() * 490) + 65);
+  var randomTop = Math.floor((Math.random() * 480) + 60);
   $('<div></div>').appendTo(".gameboard").attr('id', 'rocketRight-' + rocketNum).addClass('rocketRight rocket');
   $("#rocketRight-" + rocketNum).css({top: randomTop});
   $("#rocketRight-" + rocketNum).animate({right: '1300px'}, rocketSpeed, function() {
@@ -147,10 +158,6 @@ $('.players').click(function fireRocket() {
 / delete rockets once off screen 
 / check collision detection for rockets on screen
 */
-var delay = 500;
-
-
-
 function rocketPosition() {
   $('.rocket').each( function() {
     var x1 = $('.playerOne').position().left;
@@ -195,11 +202,13 @@ function rocketPosition() {
 // Removes player one from gameboard
 function playerOneDead() {
   $('.playerOne').remove();
+  loser();
 }
 
 //removes player two from gameboard
 function playerTwoDead() {
   $('.playerTwo').remove();
+  loser();
 }
 
 // Checks for rocket collision in set intervals

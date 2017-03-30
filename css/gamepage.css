@@ -13,6 +13,7 @@ body {
   max-height: 650px;
   width: 1440px;
   height: 650px;
+ 
 }
 
 /*Sets definite max height entire body and gameboard*/
@@ -31,9 +32,11 @@ body {
 .gameboard {
   max-width: 1100px;
   width: 1100px;
-  background-image: url('../images/ground.png');
+  background-image: url('../images/backdrop.png');
   background-size: cover;
   background-repeat: no-repeat;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }
 
 /*styles header*/
@@ -43,6 +46,7 @@ header {
   height: 120px;
   border: 2px solid black;
   box-shadow: 3px 3px 5px #444;
+
 }
 
 .gameName {
@@ -79,23 +83,32 @@ header {
 	position: relative;
 	display: inline-block;
 	float: right;
-  padding: 30px 70px 0 0;
-  font-size: 36px;
+  padding: 30px 80px 0 0;
+  font-size: 28px;
   margin: 0;
-  font-weight: 600;
-  background:-webkit-linear-gradient(#fff, #555);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 100;
 }
 
 /*Styles the contents of dropdown menu*/
-.dropdownContent{
+.dropdownContent {
+  right: 0;
 	display: none;
 	position: absolute;
 	min-width: 160px;
 	z-index: 3;
   color: white;
-  background-color: green;
+  background-color: black;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 0 5px 10px 20px;
+  border: 2px solid gold;
+}
+
+.dropdownContent h2 {
+  font-size: 20px;
+}
+
+.dropdownContent p{
+  font-size: 16px;
 }
 
 /*Adds hover quality to display dropdown menu*/
