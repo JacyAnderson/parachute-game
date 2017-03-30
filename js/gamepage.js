@@ -105,7 +105,7 @@ function rocketsLeft(){
 
 function rocketsRight(){
   var randomTop = Math.floor((Math.random() * 500) + 65);
-  $('<div>Rocket</div>').appendTo(".gameboard").attr('id', 'rocketRight-' + rocketNum).addClass('rocketRight rocket');
+  $('<div></div>').appendTo(".gameboard").attr('id', 'rocketRight-' + rocketNum).addClass('rocketRight rocket');
   $("#rocketRight-" + rocketNum).css({top: randomTop});
   $("#rocketRight-" + rocketNum).animate({right: '1300px'}, rocketSpeed);
   rocketNum++
@@ -126,6 +126,10 @@ $('.players').click(function fireRocket() {
 / delete rockets once off screen 
 / check collision detection for rockets on screen
 */
+var delay = 500;
+
+
+
 function rocketPosition() {
   $('.rocket').each( function() {
     var x1 = $('.playerOne').position().left;
@@ -157,7 +161,9 @@ function rocketPosition() {
 
     } else {
       playerTwoDead();
-      $(this).remove();
+      $(this).stop();
+      $(this).css('background-image', "url('images/explosion.gif')");
+      $(this).css('height','80px');
       console.log(true + " player two blew up");
     }
   });
