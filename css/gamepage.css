@@ -123,6 +123,35 @@ header {
 	overflow: hidden;
 }
 
+
+.button {
+  color: gold;
+  font-size: 30px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  padding: 5px 15px 5px 15px;
+  background-color: blue;
+  font-weight: 500;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.button:active {
+  transform: translateY(4px);
+}
+
+#playBtn {
+  position: absolute;
+  left: 43.1%;
+  top: 40%;
+  color: gold;
+  border: 2px solid green;
+}
+#playBtn:hover {
+  box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24), 0 15px 48px 0 rgba(0,0,0,0.19);
+}
+
+
 /*Styling for both player divs*/
 .players {
   max-width: 60px;
@@ -147,6 +176,18 @@ header {
 .playerTwo {
 	/*background-color: beige;*/
 	right: 40%;
+}
+
+.plane {
+  background-image: url('../images/c47.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 500px;
+  max-height: 150px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: -550px;
 }
 
 
@@ -183,3 +224,4 @@ header {
   background-color: red;
   border: 2px solid black;
 }
+

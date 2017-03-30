@@ -143,6 +143,12 @@ function rocketsRight(){
   rocketNum++
 }
 
+function plane() {
+  $(".plane").animate({right: '1600px'}, 15000, function() {
+    $(this).remove();
+  });
+}
+
 $('.players').click(function fireRocket() {
   window.setInterval(function() {
     rocketsLeft();
@@ -243,4 +249,7 @@ function collision(playerOne, playerTwo) {
   }
 }
 
+function play() {
+  
+}
 
