@@ -4,6 +4,7 @@
 var playerOne = ".playerOne";
 var playerTwo = ".playerTwo";
 var playerOneTop = $('.playerOne').css("top");
+var planeLeft = $('.plane').css("left");
 
 var gameOver = false;
 var playerOneLeft = 0;
@@ -11,11 +12,22 @@ var playerOneRight = 0;
 
 var moveLeft = 5;
 
+
+// Calls plane to drop troops
+$('#playBtn').click(function plane() {
+  setTimeout(gravity, 6500);
+  setTimeout(fireRocket, 7000);
+  $(".plane").animate({right: '1600px'}, 15000, function() {
+    $(this).remove();
+  });
+});
+
 /*
 / GRAVITY
 / Simulates gravity on both players
 */
-$(".players").click(function gravity(){
+// $("#playBtn").click(
+function gravity(){
     $(".players").animate({
       top: '565px'
     }, {
@@ -32,6 +44,10 @@ $(".players").click(function gravity(){
         }
     }
   })
+}
+
+$('#playBtn').click( function(){
+  $('#playBtn').fadeOut(1500);
 });
 
 function loser() {
@@ -143,18 +159,12 @@ function rocketsRight(){
   rocketNum++
 }
 
-function plane() {
-  $(".plane").animate({right: '1600px'}, 15000, function() {
-    $(this).remove();
-  });
-}
-
-$('.players').click(function fireRocket() {
+function fireRocket() {
   window.setInterval(function() {
     rocketsLeft();
     rocketsRight();
   }, 3000);
-});
+};
 // time should be 3000
 
 
@@ -249,7 +259,4 @@ function collision(playerOne, playerTwo) {
   }
 }
 
-function play() {
-  
-}
 
