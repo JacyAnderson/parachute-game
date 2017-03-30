@@ -3,7 +3,9 @@
 //Establish variables for both players
 var playerOne = ".playerOne";
 var playerTwo = ".playerTwo";
+var playerOneTop = $('.playerOne').css("top");
 
+var gameOver = false;
 var playerOneLeft = 0;
 var playerOneRight = 0;
 
@@ -14,13 +16,22 @@ var moveLeft = 5;
 / Simulates gravity on both players
 */
 $(".players").click(function gravity(){
-    $(".players").animate({top: '565px'}, 30000);
-    function checkForWin() {
-  if($('.player').top() == 570 + 'px';){
-    console.log("Easy Company wins!")
-  }
-}
-}); 
+    $(".players").animate({
+      top: '565px'
+    }, {
+      duration: 30000,
+
+      //Function that 
+      complete: function () {
+        if (gameOver === false) {
+          messageBoard();
+          console.log(gameOver);
+          $('<h2>Winner, Winner, Chicken Dinner!</h2>').appendTo('.messageBoard');
+          gameOver = true;
+        }
+    }
+  })
+});
 
 function messageBoard() {
   $('<div>A message board!</div>').appendTo('.gameboard').addClass('messageBoard');
@@ -112,7 +123,7 @@ function rocketsLeft(){
 
 // Creates rockets on left side of screen and launches them across the gameboard
 function rocketsRight(){
-  var randomTop = Math.floor((Math.random() * 500) + 65);
+  var randomTop = Math.floor((Math.random() * 490) + 65);
   $('<div></div>').appendTo(".gameboard").attr('id', 'rocketRight-' + rocketNum).addClass('rocketRight rocket');
   $("#rocketRight-" + rocketNum).css({top: randomTop});
   $("#rocketRight-" + rocketNum).animate({right: '1300px'}, rocketSpeed, function() {
@@ -128,6 +139,7 @@ $('.players').click(function fireRocket() {
   }, 3000);
 });
 // time should be 3000
+
 
 
 /*
@@ -194,6 +206,7 @@ function playerTwoDead() {
 setInterval(function() {
   rocketPosition();
 }, 400);
+
  
 // Write function that checks for collision between divs
 function collision(playerOne, playerTwo) {
