@@ -1,17 +1,16 @@
-//GAMEPAGE JS/JQUERY
+// GAMEPAGE JS/JQUERY
 
-//Establish variables for both players
+// Establish variables for both players
 var playerOne = ".playerOne";
 var playerTwo = ".playerTwo";
-var playerOneTop = $('.playerOne').css("top");
+
+// Plane distance from left
 var planeLeft = $('.plane').css("left");
 
+// Is game over?
 var gameOver = false;
-var playerOneLeft = 0;
-var playerOneRight = 0;
 
-var moveLeft = 5;
-
+// Are players alive?
 var playerOneAlive = true;
 var playerTwoAlive = true;
 
@@ -36,9 +35,8 @@ $('#playBtn').click(function plane() {
 
 /*
 / GRAVITY
-/ Simulates gravity on both players
+/ Simulates gravity on both players, and at end of animation runs win condition.
 */
-// $("#playBtn").click(
 function gravity(){
     $('.players').css('-webkit-animation', 'zoomInSlideIn 1s 1');
     $('.players').fadeIn();

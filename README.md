@@ -73,3 +73,14 @@
 
 
 
+
+## UNSOLVED PROBLEMS
+#### Players can leave gamboard
+
+#### Player 2 can push player one, but not vica versa
+
+#### After one player death, the other player can't be blown up
+
+#### Janky reset - is actually just page reload.
+
+
