@@ -229,6 +229,22 @@ transform: translateY(4px);
 	right: 40%;
 }
 
+/* animation to fade in players*/
+@-webkit-keyframes zoomInSlideIn {
+  0% {
+  -webkit-transform: scale(.7);
+  opacity: 0;
+  transform: translate(0px, 40px);
+  }
+
+
+  100%{
+  -webkit-transform: scale(1);
+  opacity: 1;
+  transform: translate(0px, 0px);
+  }
+}
+
 /* styles C47 that drops troops*/
 .plane {
   background-image: url('../images/c47.png');
@@ -339,3 +355,10 @@ transform: translateY(4px);
   margin-top: 3px;
 }
 
+footer {
+  background: linear-gradient(#0d0c0a, #39363f);
+  border: 2px solid #39363f;
+  box-shadow: 0 -5px 5px -5px #333;
+  height: 120px;
+  width: 100%;
+}

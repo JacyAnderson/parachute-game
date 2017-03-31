@@ -15,8 +15,18 @@ var moveLeft = 5;
 var playerOneAlive = true;
 var playerTwoAlive = true;
 
+var theme = $('#theme');
+theme.volume = -10;
+
+// // Play theme
+$(document).ready(function() {
+    $('#ambient').get(0).play();
+});
+
+
 // Calls plane to drop troops
 $('#playBtn').click(function plane() {
+  $('#planeAudio').get(0).play();
   setTimeout(gravity, 6500);
   setTimeout(fireRocket, 6500);
   $(".plane").animate({right: '1600px'}, 15000, function() {
@@ -24,22 +34,20 @@ $('#playBtn').click(function plane() {
   });
 });
 
-
-
-
 /*
 / GRAVITY
 / Simulates gravity on both players
 */
 // $("#playBtn").click(
 function gravity(){
+    $('.players').css('-webkit-animation', 'zoomInSlideIn 1s 1');
     $('.players').fadeIn();
     $(".players").animate({
       top: '565px'
     }, {
       duration: 30000,
 
-      //Function that 
+      //Checks if game has been won and creates "win" message
       complete: function () {
         if (gameOver === false) {
           messageBoard();
@@ -215,6 +223,7 @@ function rocketPosition() {
       x1 > (x3 + $(this).outerWidth(true))) {
         // console.log(false);
     } else {
+      $('#explosion').get(0).play();
       playerOneAlive = false;
       playerOneDead();
       $(this).stop();
@@ -231,6 +240,7 @@ function rocketPosition() {
       x2 > (x3 + $(this).outerWidth(true))) {
 
     } else {
+      $('#explosion').get(0).play();
       playerTwoAlive =  false;
       playerTwoDead();
       $(this).stop();

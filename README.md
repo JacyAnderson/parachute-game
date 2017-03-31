@@ -13,7 +13,7 @@
 #### If one player is lost, the Team as a whole loses. Using communication and teamwork, both players must evade incoming fire by strafing right and left out of harms way until both troopers land safely on the ground.
 
 ## Applications Used
-### - Jquery 
+ - Jquery 
  - CSS
  -HTML
  -JavaScript
