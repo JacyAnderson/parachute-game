@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Browser page title -->
 	<title>Easy Company</title>
+
+  <!-- Chosen font for game -->
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet">
+
+ <!--  Link to CSS stylesheet -->
 	<link rel="stylesheet" type="text/css" href="css/gamepage.css">
 </head>
+
+<!-- Main body of game -->
 <body class="height margin">
   <header>
+
+    <!-- Game name -->
     <h2 class="gameName" data-text="Easy Company">Easy Company</h2>
+
+    <!-- Eagle patch -->
     <div id="airborne"></div>
+    
+   <!--  Dropdown name and menu -->
     <div class="dropdown">
     	<span>Controls</span>
+
+      <!-- Content of dropdown menu -->
     	<div class="dropdownContent">
         <h2>Player 1:</h2>
     	  <p>Move left:  "A" key <br>Move right:  "D" key</p>
@@ -19,20 +34,30 @@
     	</div>
     </div>
   </header>
-  <!-- <canvas class="canvasBoard" width="1440" height="650"></canvas> -->
-  <div class="wrapper">
-    <div class="gameboard height margin">
-      <div class="plane"></div>
-      <div class="playerOne players"">
-      </div>
-      <div class="playerTwo players">
-      </div>
-      <button id="playBtn" class="button">Play Now</button>
-    </div>
-  </div>
+ 
+<!--   Main gameboard -->
+  <div class="gameboard height margin">
 
+    <!-- C47 Troop plane that animates onto screen -->
+    <div class="plane"></div>
+
+    <!-- player one div -->
+    <div class="playerOne players"">
+    </div>
+
+    <!-- Player two div -->
+    <div class="playerTwo players">
+    </div>
+
+    <!-- Initial play button -->
+    <button id="playBtn" class="button">Play Now</button>
+  </div>
+ 
+  <!-- Connect jQuery -->
   <script type="text/javascript" src="js/jquery-3.2.0.js">
   </script>
+
+  <!-- Connect to javascript page -->
   <script type="text/javascript" src="js/gamepage.js">
   </script>
 </body>

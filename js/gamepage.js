@@ -12,15 +12,20 @@ var playerOneRight = 0;
 
 var moveLeft = 5;
 
+var playerOneAlive = true;
+var playerTwoAlive = true;
 
 // Calls plane to drop troops
 $('#playBtn').click(function plane() {
   setTimeout(gravity, 6500);
-  setTimeout(fireRocket, 7000);
+  setTimeout(fireRocket, 6500);
   $(".plane").animate({right: '1600px'}, 15000, function() {
     $(this).remove();
   });
 });
+
+
+
 
 /*
 / GRAVITY
@@ -28,6 +33,7 @@ $('#playBtn').click(function plane() {
 */
 // $("#playBtn").click(
 function gravity(){
+    $('.players').fadeIn();
     $(".players").animate({
       top: '565px'
     }, {
@@ -39,29 +45,46 @@ function gravity(){
           messageBoard();
           $('.messageBoard').css("background-color", "#99773D");
           console.log(gameOver);
-          $('<h2>Winner, Winner, Chicken Dinner!</h2>').appendTo('.messageBoard');
+          $('<h2>Mission Accomplished</h2>').appendTo('.messageBoard');
+          $('<p>\"The first man stepped up to the open door. All the men had been ordered to look out at the horizon, not straight down, for obvious psychological reasons.\"</p>').appendTo('.messageBoard');
+          $('<p><span>Stephen E. Ambrose - Band of Brothers<span></p>').appendTo('.messageBoard').addClass('quote');
+          $('<button>Play Again</button>').appendTo('.messageBoard').attr('id', 'playAgain').addClass('button reloadButton');
+          $('#playAgain').click(function(){
+            location.reload();
+          });
           gameOver = true;
         }
     }
   })
 }
 
+// When Play Button is clicked, button fades out
 $('#playBtn').click( function(){
   $('#playBtn').fadeOut(1500);
 });
 
+
+// Triggers lose message on player death
 function loser() {
   if (gameOver === false) {
      messageBoard();
     $('.messageBoard').css("background-color", "grey");
-    $('<h2>How does it feel to be a loser?</h2>').appendTo('.messageBoard');
+    $('<h2>Trooper Lost</h2>').appendTo('.messageBoard');
+    $('<p>\"It was close; but that\'s the way it is in war. You win or lose, live or die, and the difference is just an eyelash.\"</p>').appendTo('.messageBoard');
+    $('<p><span>General Douglas MacArthur<span></p>').appendTo('.messageBoard').addClass('quote');
+    $('<button>Try Again</button>').appendTo('.messageBoard').attr('id','tryAgain').addClass('button');
+    $('#tryAgain').click(function(){
+      location.reload();
+    });
     console.log(gameOver);
+
     gameOver = true;
   }
 }
 
+// Creates win/lose message board when called
 function messageBoard() {
-  $('<div>A message board!</div>').appendTo('.gameboard').addClass('messageBoard');
+  $('<div></div>').appendTo('.gameboard').addClass('messageBoard');
 }
 
 // Function to move playerOne
@@ -159,6 +182,8 @@ function rocketsRight(){
   rocketNum++
 }
 
+
+// Fires rockets from both sides at set interval
 function fireRocket() {
   window.setInterval(function() {
     rocketsLeft();
@@ -184,12 +209,13 @@ function rocketPosition() {
     var y3 = $(this).position().top;
     // console.log("hello");
     // console.log(this);
-    if ((y1 + $('.playerOne').outerHeight(true)) < y3 ||
+    if (playerOneAlive === true && (y1 + $('.playerOne').outerHeight(true)) < y3 ||
       y1 > (y3 + $(this).outerHeight(true))  ||
       (x1 + $('.playerOne').outerWidth(true)) < x3 ||
       x1 > (x3 + $(this).outerWidth(true))) {
         // console.log(false);
     } else {
+      playerOneAlive = false;
       playerOneDead();
       $(this).stop();
       $(this).css('background-image', "url('images/explosion.gif')");
@@ -199,12 +225,13 @@ function rocketPosition() {
       // $(this).remove();
       console.log(true + " player one blew up");
     }
-    if ((y2 + $('.playerTwo').outerHeight(true)) < y3 ||
+    if (playerTwoAlive = true && (y2 + $('.playerTwo').outerHeight(true)) < y3 ||
       y2 > (y3 + $(this).outerHeight(true))  ||
       (x2 + $('.playerTwo').outerWidth(true)) < x3 ||
       x2 > (x3 + $(this).outerWidth(true))) {
 
     } else {
+      playerTwoAlive =  false;
       playerTwoDead();
       $(this).stop();
       $(this).css('background-image', "url('images/explosion.gif')");
@@ -233,7 +260,7 @@ setInterval(function() {
 }, 400);
 
  
-// Write function that checks for collision between divs
+// Write function that checks for collision between players
 function collision(playerOne, playerTwo) {
   var x1 = $('.playerOne').offset().left;
   var y1 = $('.playerOne').offset().top;
@@ -243,7 +270,7 @@ function collision(playerOne, playerTwo) {
   // console.log(y1 + "is player one's y coordinate");
   // console.log(x2 + "is player two's x coordinate");
   // console.log(y2 + "is player two's y coordinate");
-  if ((y1 + $('.playerOne').outerHeight(true)) < y2 ||
+  if (playerOneAlive===true && playerTwoAlive===true &&(y1 + $('.playerOne').outerHeight(true)) < y2 ||
     y1 > (y2 + $('.playerTwo').outerHeight(true))  ||
     (x1 + $('.playerOne').outerWidth(true)) < x2 ||
     x1 > (x2 + $('.playerTwo').outerWidth(true))) {
@@ -258,5 +285,6 @@ function collision(playerOne, playerTwo) {
     })
   }
 }
+
 
 
