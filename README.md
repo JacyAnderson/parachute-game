@@ -2,6 +2,8 @@
 
 # [Link to my Trello](https://trello.com/b/3MgGS7wO/parachute-project-1)
 
+# [Play the Game Here](https://jacyanderson.github.io/parachute-game/)
+
 ![](images/wireframe.JPG)
 
 #Game Name: Easy Company
