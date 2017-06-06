@@ -2,17 +2,21 @@
 
 /*Entire page styling*/
 * {
-   color: white;
+  color: white;
   font-family: 'Oswald', sans-serif;
 }
 
 /*Sets definite body size*/
 body {
-/*  background-color: black;*/
-   height: 650px;
-  max-width: 1440px;
+  background-color: #BDB090;
+  height: 650px;
+  max-width: 100vw;
   max-height: 650px;
-  width: 1440px;
+  width: 100vw;
+}
+
+.brand {
+  display: inline-block;
 }
 
 /*Sets definite max height entire body and gameboard*/
@@ -45,7 +49,7 @@ header {
   border: 2px solid black;
   box-shadow: 3px 3px 5px #444;
   height: 120px;
-  width: 100%;
+  width: 100vw;
   position: relative;
 }
 
@@ -70,11 +74,10 @@ header {
   background-size: cover; 
   display: inline-block;
   height: 115px;
-  left: 34%;
-  max-width: 80px;
-  max-height: 120px;
+  /*left: 34%;*/
+  margin-left:20px;
+  max-height: 120px;    
   position: absolute;
-  top: 0;
   width: 80px;
   z-index: 1;
 }
@@ -85,9 +88,10 @@ header {
   float: right;
   font-size: 28px;
   font-weight: 100;
-   margin: 0;
+  margin: 0 20px 0 0;
   padding: 40px 85px 0 0;
 	position: relative;
+  width:40px;
 }
 
 /* Styles color of words marked with span in html*/
@@ -359,6 +363,13 @@ footer {
   background: linear-gradient(#0d0c0a, #39363f);
   border: 2px solid #39363f;
   box-shadow: 0 -5px 5px -5px #333;
-  height: 120px;
-  width: 100%;
+  height: 136px;
+  width: 100vw;
+}
+
+@media (max-width: 1100px) {
+  .gameBoard {
+    background: red;
+    z-index: 6;
+  }
 }
