@@ -1,22 +1,26 @@
-//GAMEPAGE JS/JQUERY
+// GAMEPAGE JS/JQUERY
 
-//Establish variables for both players
+// Establish variables for both players
 var playerOne = ".playerOne";
 var playerTwo = ".playerTwo";
-var playerOneTop = $('.playerOne').css("top");
+
+// Plane distance from left
 var planeLeft = $('.plane').css("left");
 
+// Is game over?
 var gameOver = false;
-var playerOneLeft = 0;
-var playerOneRight = 0;
 
-var moveLeft = 5;
-
+// Are players alive?
 var playerOneAlive = true;
 var playerTwoAlive = true;
 
 var theme = $('#theme');
 theme.volume = -10;
+
+var iniTimeout = 6500;
+var gravityTime = 30000;
+var rocketTime = 3000;
+var checkRocketPos = 400;
 
 // // Play theme
 $(document).ready(function() {
@@ -27,8 +31,8 @@ $(document).ready(function() {
 // Calls plane to drop troops
 $('#playBtn').click(function plane() {
   $('#planeAudio').get(0).play();
-  setTimeout(gravity, 6500);
-  setTimeout(fireRocket, 6500);
+  setTimeout(gravity, iniTimeout);
+  setTimeout(fireRocket, iniTimeout);
   $(".plane").animate({right: '1600px'}, 15000, function() {
     $(this).remove();
   });
@@ -36,16 +40,15 @@ $('#playBtn').click(function plane() {
 
 /*
 / GRAVITY
-/ Simulates gravity on both players
+/ Simulates gravity on both players, and at end of animation runs win condition.
 */
-// $("#playBtn").click(
 function gravity(){
     $('.players').css('-webkit-animation', 'zoomInSlideIn 1s 1');
     $('.players').fadeIn();
     $(".players").animate({
       top: '565px'
     }, {
-      duration: 30000,
+      duration: gravityTime,
 
       //Checks if game has been won and creates "win" message
       complete: function () {
@@ -196,7 +199,7 @@ function fireRocket() {
   window.setInterval(function() {
     rocketsLeft();
     rocketsRight();
-  }, 3000);
+  }, rocketTime);
 };
 // time should be 3000
 
@@ -267,7 +270,7 @@ function playerTwoDead() {
 // Checks for rocket collision in set intervals
 setInterval(function() {
   rocketPosition();
-}, 400);
+}, checkRocketPos);
 
  
 // Write function that checks for collision between players

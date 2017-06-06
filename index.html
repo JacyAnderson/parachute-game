@@ -7,25 +7,32 @@
   <!-- Chosen font for game -->
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet">
 
- <!--  Link to CSS stylesheet -->
+  <!--  Link to CSS stylesheet -->
 	<link rel="stylesheet" type="text/css" href="css/gamepage.css">
 
-  <audio id="theme" src="theme.mp3" loop="loop"></audio>
-  <audio id="planeAudio" src="planeAudio.mp3"></audio>
-  <audio id="explosion" src="explosion.mp3"></audio>
-  <audio id="ambient" src="ambient.mp3"></audio>
+  <!-- Theme audio -->
+  <audio id="theme" src="mp3/theme.mp3" loop="loop"></audio>
+
+  <!-- Plane Audio -->
+  <audio id="planeAudio" src="mp3/planeAudio.mp3"></audio>
+
+  <!-- Explosion effect audio -->
+  <audio id="explosion" src="mp3/explosion.mp3"></audio>
+
+  <!-- Ambient battlefield noise -->
+  <audio id="ambient" src="mp3/ambient.mp3"></audio>
 </head>
 
 <!-- Main body of game -->
 <body class="height margin">
   <header>
-
-    <!-- Game name -->
-    <h2 class="gameName" data-text="Easy Company">Easy Company</h2>
+    <div class="brand">
+      <!-- Game name -->
+      <h2 class="gameName" data-text="Easy Company">Easy Company</h2>
+    </div>
 
     <!-- Eagle patch -->
     <div id="airborne"></div>
-    
    <!--  Dropdown name and menu -->
     <div class="dropdown">
     	<span>Controls</span>
@@ -66,8 +73,6 @@
   <script type="text/javascript" src="js/gamepage.js">
   </script>
   
-  <footer>
-    
-  </footer>
+  <footer> </footer>
 </body>
 </html>
